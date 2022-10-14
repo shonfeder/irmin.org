@@ -202,7 +202,7 @@ For example, you can pull a repo and list the files in the root of the project:
 
 ```ocaml skip
 module Git_mem_store = Irmin_git_unix.Mem.KV(Irmin.Contents.String)
-module Sync = Irmin.Sync(Git_mem_store)
+module Sync = Irmin.Sync.Make(Git_mem_store)
 let remote = Git_mem_store.remote "git://github.com/mirage/irmin.git"
 let main =
     let* repo = Git_mem_store.Repo.v config in
